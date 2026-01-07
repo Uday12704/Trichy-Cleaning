@@ -1,5 +1,6 @@
 import { columns, Product } from "./columns";
 import { DataTable } from "./data-table";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
 const getData = async (): Promise<Product[]> => {
     return [
@@ -74,8 +75,19 @@ export default async function UsersPage() {
     const data = await getData();
     return (
         <div className="">
-            <div className="mb-8 px-4 py-2 bg-secondary rounded-md">
-                <h1 className="font-semibold">All Users</h1>
+            <Breadcrumb>
+                <BreadcrumbList>
+                    <BreadcrumbItem>
+                        <BreadcrumbLink href="/">Dashboard</BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <BreadcrumbPage>Products</BreadcrumbPage>
+                    </BreadcrumbItem>
+                </BreadcrumbList>
+            </Breadcrumb>
+            <div className="mt-4 mb-8 px-4 py-2 bg-secondary rounded-md">
+                <h1 className="font-semibold">All Products</h1>
             </div>
             <DataTable columns={columns} data={data}/>
         </div>
