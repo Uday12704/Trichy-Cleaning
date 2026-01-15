@@ -13,6 +13,10 @@
     "turbo": "^2.7.2",
     "typescript": "5.9.2"
   },
+  "overrides": {
+    "hono": "^4.11.4",
+    "valibot": "^1.2.0"
+  },
   "engines": {
     "node": ">=18"
   },
