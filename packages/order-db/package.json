@@ -1,0 +1,12 @@
+{
+    "name": "order-db",
+    "version": "0.0.1",
+    "type": "module",
+    "dependencies": {
+        "@repo/typescript-config": "*"
+    },
+    ".": "./src/index.ts",
+    "devDependencies": {
+        "@types/node": "^25.0.10"
+    }
+}
