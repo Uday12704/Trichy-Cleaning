@@ -36,7 +36,7 @@ app.use((err: any, req:Request, res:Response, next:NextFunction) => {
     console.log(err);
     return res.status(err.status || 500).json({message: err.message || "Internal Server Error!"});
 })
-
+console.log("Checking DATABASE_URL:", process.env.DATABASE_URL ? "✅ Loaded" : "❌ MISSING");
 app.listen(8000, () => {
     console.log("Product service is running on port 8000");
 })
