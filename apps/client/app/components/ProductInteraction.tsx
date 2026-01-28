@@ -1,6 +1,6 @@
 "use client"
 
-import { ProductType } from "@/types"
+import { ProductType } from "@repo/types"
 import { Minus, Plus, ShoppingCart } from "lucide-react"
 import { useState } from "react"
 import useCartStore from "../stores/cartStore"

@@ -1,5 +1,4 @@
 import ProductInteraction from "@/app/components/ProductInteraction";
-import { ProductType } from "@/types"
 import { products } from "@/app/components/ProductList";
 import Image from "next/image"
 import { notFound } from "next/navigation";

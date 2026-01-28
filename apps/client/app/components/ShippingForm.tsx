@@ -1,4 +1,4 @@
-import { ShippingFormInputs, ShippingFormSchema } from "@/types";
+import { ShippingFormInputs, ShippingFormSchema } from "@repo/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ArrowRight } from "lucide-react";
@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 export default function ShippingForm({setShippingForm}:{setShippingForm:(data:ShippingFormInputs) => void}) {
     const {register, handleSubmit, formState: {errors},} = useForm<ShippingFormInputs> ({
-        resolver: zodResolver(ShippingFormSchema),
+        resolver: zodResolver(ShippingFormSchema as any),
     })
 
     const router = useRouter();

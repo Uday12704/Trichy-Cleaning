@@ -14,8 +14,8 @@
     "typescript": "5.9.2"
   },
   "overrides": {
-    "hono": "^4.11.4",
-    "valibot": "^1.2.0",
+    "hono": "^4.11.7",
+    "next": "^16.1.5",
     "lodash": "^4.17.21"
   },
   "engines": {

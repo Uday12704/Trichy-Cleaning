@@ -1,10 +1,9 @@
 "use client"
 
-import { ShippingFormInputs } from "@/types"
+import { ShippingFormInputs } from "@repo/types"
 import { ArrowRight, Trash2 } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
 import ShippingForm from "../components/ShippingForm"
-import PaymentForm from "../components/PaymentForm"
 import { useState } from "react"
 import Image from "next/image"
 import useCartStore from "../stores/cartStore"
@@ -78,7 +77,7 @@ const steps = [
                         ))
                     ) : 
                      activeStep === 2 ? (<ShippingForm setShippingForm = {setShippingForm}/>) : 
-                     activeStep === 3 && shippingForm ? (<PaymentForm />) : 
+                     activeStep === 3 && shippingForm ? ("TODO: Add Razorpay Form") : 
                      (<p className="text-sm text-gray-500">Please fill in the shipping form to continue.</p>)}
                 </div>
                 <div className="w-full lg:w-5/12 shadow-lg rounded-lg border-1 border-gray-100 flex flex-col gap-8 p-8 h-max">

@@ -1,4 +1,4 @@
-import {ProductsType} from "@/types";
+import {ProductsType} from "@repo/types";
 import Categories from "./Categories";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
@@ -12,6 +12,9 @@ export const products: ProductsType = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa assumenda, architecto quod eligendi suscipit dolores ipsam ad similique laboriosam quia modi possimus repudiandae incidunt explicabo facilis, nisi dolorem culpa sint!" ,
         price: 1500,
         images: "https://res.cloudinary.com/deb4k16gn/image/upload/e_upscale/3Bkt_Trolley_e6wt2m.jpg",
+        categorySlug: "test",
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
         id: 2,
@@ -20,6 +23,9 @@ export const products: ProductsType = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa assumenda, architecto quod eligendi suscipit dolores ipsam ad similique laboriosam quia modi possimus repudiandae incidunt explicabo facilis, nisi dolorem culpa sint!" ,
         price: 400,
         images: "https://res.cloudinary.com/deb4k16gn/image/upload/e_upscale/v1766494598/24_inch_Dry_Mop_xrubjw.jpg",
+        categorySlug: "test",
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
         id: 3,
@@ -28,6 +34,9 @@ export const products: ProductsType = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa assumenda, architecto quod eligendi suscipit dolores ipsam ad similique laboriosam quia modi possimus repudiandae incidunt explicabo facilis, nisi dolorem culpa sint!" ,
         price: 56,
         images: "https://res.cloudinary.com/deb4k16gn/image/upload/e_upscale/v1766494599/AER_lxv6sb.jpg",
+        categorySlug: "test",
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
         id: 4,
@@ -36,6 +45,9 @@ export const products: ProductsType = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa assumenda, architecto quod eligendi suscipit dolores ipsam ad similique laboriosam quia modi possimus repudiandae incidunt explicabo facilis, nisi dolorem culpa sint!" ,
         price: 100,
         images: "https://res.cloudinary.com/deb4k16gn/image/upload/e_upscale/v1766494599/AL_Sticks_jzzj7v.jpg",
+        categorySlug: "test",
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
         id: 5,
@@ -44,6 +56,9 @@ export const products: ProductsType = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa assumenda, architecto quod eligendi suscipit dolores ipsam ad similique laboriosam quia modi possimus repudiandae incidunt explicabo facilis, nisi dolorem culpa sint!" ,
         price: 100,
         images: "https://res.cloudinary.com/deb4k16gn/image/upload/e_upscale/v1766494600/Applicator_zkfpba.jpg",
+        categorySlug: "test",
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
         id: 6,
@@ -52,6 +67,9 @@ export const products: ProductsType = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa assumenda, architecto quod eligendi suscipit dolores ipsam ad similique laboriosam quia modi possimus repudiandae incidunt explicabo facilis, nisi dolorem culpa sint!" ,
         price: 100,
         images: "https://res.cloudinary.com/deb4k16gn/image/upload/e_upscale/v1766494599/Bio_Septic_nvjzay.jpg",
+        categorySlug: "test",
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
         id: 7,
@@ -60,6 +78,9 @@ export const products: ProductsType = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa assumenda, architecto quod eligendi suscipit dolores ipsam ad similique laboriosam quia modi possimus repudiandae incidunt explicabo facilis, nisi dolorem culpa sint!" ,
         price: 100,
         images: "https://res.cloudinary.com/deb4k16gn/image/upload/e_upscale/v1766494599/C-103_trolley_zov1h1.jpg",
+        categorySlug: "test",
+        createdAt: new Date(),
+        updatedAt: new Date(),
     },
     {
         id: 8,
@@ -68,6 +89,9 @@ export const products: ProductsType = [
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa assumenda, architecto quod eligendi suscipit dolores ipsam ad similique laboriosam quia modi possimus repudiandae incidunt explicabo facilis, nisi dolorem culpa sint!" ,
         price: 100,
         images: "https://res.cloudinary.com/deb4k16gn/image/upload/e_upscale/v1766494600/Caddy_rb6ruk.jpg",
+        categorySlug: "test",
+        createdAt: new Date(),
+        updatedAt: new Date(),
     }
 ];
 
