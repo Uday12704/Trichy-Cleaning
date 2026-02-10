@@ -7,6 +7,8 @@ import ShippingForm from "../components/ShippingForm"
 import { useState } from "react"
 import Image from "next/image"
 import useCartStore from "../stores/cartStore"
+import RazorpayButton from "../components/RazorpayButton"
+import PaymentForm from "../components/PaymentForm"
  
 const steps = [
     {
@@ -77,7 +79,10 @@ const steps = [
                         ))
                     ) : 
                      activeStep === 2 ? (<ShippingForm setShippingForm = {setShippingForm}/>) : 
-                     activeStep === 3 && shippingForm ? ("TODO: Add Razorpay Form") : 
+                     activeStep === 3 && shippingForm ? ( <PaymentForm 
+                            shippingForm = {shippingForm}
+                            amount={subTotal()}
+                            cartItems={cart}/>) : 
                      (<p className="text-sm text-gray-500">Please fill in the shipping form to continue.</p>)}
                 </div>
                 <div className="w-full lg:w-5/12 shadow-lg rounded-lg border-1 border-gray-100 flex flex-col gap-8 p-8 h-max">

@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ToastContainer } from 'react-toastify';
 import { ClerkProvider } from "@clerk/nextjs";
+import Script from 'next/script'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,10 @@ export default function RootLayout({
           <div className="mx-auto p-4 sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-[95%]">
             <Navbar />
             {children}
+            <Script 
+              id="razorpay-checkout" 
+              src="https://checkout.razorpay.com/v1/checkout.js" 
+            />
             <Footer />
           </div>
           <ToastContainer position="bottom-right" />

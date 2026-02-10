@@ -49,6 +49,13 @@ export default function ShippingForm({setShippingForm}:{setShippingForm:(data:Sh
                 )}
             </div>
             <div className="flex flex-col gap-2">
+                <label htmlFor="zip" className="text-sm text-gray-800 font-medium">Pin Code</label>
+                <input type="text" id="zip" placeholder="123456" className="outline-none text-sm p-1 border-1 border-gray-200 rounded-md" {...register("zip")}/>
+                {errors.zip && (
+                    <p className="text-xs text-red-500">{errors.zip.message}</p>
+                )}
+            </div>
+            <div className="flex flex-col gap-2">
                 <label htmlFor="city" className="text-sm text-gray-800 font-medium">City</label>
                 <input type="text" id="city" placeholder="Trichy" className="outline-none text-sm p-1 border-1 border-gray-200 rounded-md" {...register("city")}/>
                 {errors.city && (

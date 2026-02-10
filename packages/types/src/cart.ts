@@ -14,6 +14,7 @@ export const ShippingFormSchema = z.object({
     address: z.string().min(1, "Address is required!"),
     city: z.string().min(1, "City is required!"),
     state: z.string().min(1, "State is required!"),
+    zip: z.string().min(6, "Pin Code must be 6 digits!").max(6, "Pin Code must be 6 digits!"),
 })
 
 export type ShippingFormInputs = z.infer <typeof ShippingFormSchema>;

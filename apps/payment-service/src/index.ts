@@ -1,10 +1,14 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
+import { cors } from 'hono/cors'
 import { clerkMiddleware, getAuth } from '@hono/clerk-auth'
 import { shouldBeUser } from './middleware/authMiddleware.js'
+import paymentRoutes from './routes/payment.js'
 
 const app = new Hono()
+
 app.use('*', clerkMiddleware())
+app.use("*", cors({ origin: ["http://localhost:3002"]}));
 
 app.get('/health', (c) => {
   return c.json({
@@ -20,6 +24,8 @@ app.get('/test', shouldBeUser, (c) => {
     userId: c.get("userId"),
   })
 })
+
+app.route('/', paymentRoutes)
 
 const start = async () => {
   try {
