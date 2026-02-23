@@ -22,6 +22,7 @@
     "@clerk/fastify": "^2.6.12",
     "@fastify/cors": "^11.2.0",
     "@repo/order-db": "*",
+    "@repo/kafka": "*",
     "fastify": "^5.5.0"
   }
 }

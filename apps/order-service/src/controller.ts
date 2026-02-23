@@ -1,4 +1,5 @@
 import { Order } from "./models/Order";
+import { producer } from "./utils/kafka";
 import { calculateTotalPrice } from "./utils/pricing";
 import { FastifyRequest, FastifyReply } from "fastify";
 
@@ -68,7 +69,7 @@ export const createOrder = async (request: FastifyRequest<{ Body: CreateOrderBod
             { new: true }
         );
 
-console.log("DEBUG: Order Saved in DB with Razorpay ID:", savedOrder?.razorpayOrderId);
+        console.log("DEBUG: Order Saved in DB with Razorpay ID:", savedOrder?.razorpayOrderId);
 
         return reply.status(201).send({
             orderId: newOrder._id,
@@ -93,7 +94,6 @@ export const verifyPayment = async (request: FastifyRequest, reply: FastifyReply
     }
 
     try {
-        
         const verifyRes = await fetch("http://localhost:8002/verify", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -103,22 +103,35 @@ export const verifyPayment = async (request: FastifyRequest, reply: FastifyReply
         const data = await verifyRes.json();
 
         if (data.success) {
-        const updatedOrder = await Order.findOneAndUpdate(
-            { razorpayOrderId: razorpayOrderId },
-            { 
-                status: 'PAID',
-                razorpayPaymentId: razorpayPaymentId,
-                razorpaySignature: razorpaySignature
-            },
-            { new: true }
-        );
-        if (!updatedOrder) {
-            console.error("❌ CRITICAL ERROR: Database update returned NULL. Order not found!");
-        } else {
-            console.log("✅ Database Updated! New Status:", updatedOrder.status);
-        }
+            const updatedOrder = await Order.findOneAndUpdate(
+                { razorpayOrderId: razorpayOrderId },
+                { 
+                    status: 'PAID',
+                    razorpayPaymentId: razorpayPaymentId,
+                    razorpaySignature: razorpaySignature
+                },
+                { new: true }
+            );
+            if (!updatedOrder) {
+                console.error("❌ CRITICAL ERROR: Database update returned NULL. Order not found!");
+            } else {
+                console.log("✅ Database Updated! New Status:", updatedOrder.status);
 
-        return reply.send({ success: true, message: "Payment Successful" });
+                try {
+                    await producer.send("order-events", {
+                        event: "ORDER_PAID",
+                        orderId: updatedOrder._id,
+                        userId: updatedOrder.userId,
+                        email: updatedOrder.email,
+                        amount: updatedOrder.totalAmount
+                    });
+                    console.log(`📢 Kafka Event Fired: ORDER_PAID for ${updatedOrder._id}`);
+                } catch (kafkaError) {
+                    console.error("❌ Failed to send Kafka event:", kafkaError);
+                }
+            }
+
+            return reply.send({ success: true, message: "Payment Successful" });
         }
         else {
             console.error(`[Verify] Signature Invalid`);
