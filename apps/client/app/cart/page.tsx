@@ -69,9 +69,10 @@ const steps = [
                                     <div className="flex flex-col justify-between">
                                         <div className="flex flex-col gap-1">
                                             <p className="text-sm font-medium">{item.name}</p>
+                                            <p className="text-xs text-gray-500">Price: {item.price.toFixed(2)}</p>
                                             <p className="text-xs text-gray-500">Quantity: {item.quantity}</p>
                                         </div>
-                                        <p className="text-sm">₹{item.price}</p>
+                                        <p className="text-sm">₹{ (item.price * item.quantity).toFixed(2) }</p>
                                     </div>
                                 </div>
                                 <button onClick={() => removeFromCart(item)} className="flex items-center justify-center w-8 h-8 rounded-full bg-red-100 text-red-400 cursor-pointer hover:bg-red-200 transition-all duration-300"><Trash2 className="w-4 h-4" /></button>

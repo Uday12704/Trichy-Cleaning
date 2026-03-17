@@ -1,22 +1,22 @@
 "use client"
-import {ShoppingBasket, BrushCleaning, SoapDispenserDroplet, RectangleEllipsis, Trash} from 'lucide-react'
+import {ShoppingBasket, BrushCleaning, SoapDispenserDroplet, RectangleEllipsis, Trash, Boxes} from 'lucide-react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 const categories = [
     {
         name: "All",
         icon: <ShoppingBasket className='w-5 h-5' />,
-        slug: "all"
+        slug: ""
     },
     {
         name: "Tools",
         icon: <BrushCleaning className='w-5 h-5' />,
-        slug: "tools"
+        slug: "cleaning tools"
     },
     {
         name: "Cleaning Liquids",
         icon: <SoapDispenserDroplet className='w-5 h-5' />,
-        slug: "cleaning-liquids"
+        slug: "cleaning liquids"
     },
     {
         name: "Mats",
@@ -28,6 +28,11 @@ const categories = [
         icon: <Trash className='w-5 h-5' />,
         slug: "plasticwares"
     },
+    {
+        name: "Spares",
+        icon: <Boxes className='w-5 h-5' />,
+        slug: "spares"
+    }
 ]
 
 export default function Categories() {
@@ -40,7 +45,7 @@ export default function Categories() {
 
     const handleChange = (value: string | null) => {
         const params = new URLSearchParams(searchParams);
-        params.set("category", value || "all");
+        params.set("category", value || "");
         router.push(`${pathName}?${params.toString()}`, { scroll: false });
     }
 

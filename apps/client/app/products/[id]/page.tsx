@@ -1,12 +1,16 @@
 import ProductInteraction from "@/app/components/ProductInteraction";
-import { products } from "@/app/components/ProductList";
+import { ProductType } from "@repo/types";
 import Image from "next/image"
 import { notFound } from "next/navigation";
 
+const fetchProduct = async (id: string) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_PRODUCT_SERVICE_URL}/products/${id}`);
+    const data:ProductType = await res.json();
+    return data;
+}
 export const generateMetadata = async({params}: {params:Promise<{id:string}>}) => {
-
     const {id} = await params;
-    const product = products.find((p) => p.id === Number(id));
+    const product = await fetchProduct(id);
     if (!product) {
         return { title: "Product Not Found" };
     }
@@ -18,7 +22,7 @@ export const generateMetadata = async({params}: {params:Promise<{id:string}>}) =
 
 export default async function ProductPage ({params}:{params:Promise<{id:string}>}) {
     const {id} = await params;
-    const product = products.find((p) => p.id === Number(id));
+    const product = await fetchProduct(id);
     if (!product) {
         return notFound(); 
     }

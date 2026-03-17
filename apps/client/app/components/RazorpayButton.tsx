@@ -26,6 +26,11 @@ export default function RazorpayButton({ shippingForm, amount, cartItems }: Razo
 
         try {
             const token = await getToken();
+            console.log("User ID: ", userId);
+            if(!userId) {
+                alert("User not authenticated");
+                throw new Error("User not authenticated");
+            }
             const res = await fetch (`${process.env.NEXT_PUBLIC_ORDER_SERVICE_URL}/api/orders`, {
                 method: "POST",
                 headers: {
@@ -46,13 +51,14 @@ export default function RazorpayButton({ shippingForm, amount, cartItems }: Razo
                         zip: shippingForm.zip
                     }
                 }),
-            })
+            });
 
             if(!res.ok) {
                 throw new Error("Order creation failed");
             }
 
             const orderData = await res.json();
+            console.log("Order data: ", orderData);
 
             const options = {
                 key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
