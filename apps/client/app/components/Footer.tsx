@@ -33,15 +33,15 @@ export default function footer() {
                     <p className="text-lg text-tcspink">Links</p>
                     <Link href="/" className="hover-border">Homepage</Link>
                     <Link href="/" className="hover-border">Contact</Link>
-                    <Link href="/" className="hover-border">Products</Link>
+                    <Link href="/products" className="hover-border">Products</Link>
                     <Link href="/" className="hover-border">Enquiry</Link>
                 </div>
                 <div className="flex flex-col gap-4 text-sm items-center sm:items-start">
                     <p className="text-lg text-tcspink">Products</p>
-                    <Link href="/" className="hover-border">Product lists</Link>
-                    <Link href="/" className="hover-border">Popular</Link>
-                    <Link href="/" className="hover-border">Top seller</Link>
-                    <Link href="/" className="hover-border">New Arrival</Link>
+                    <Link href="/products" className="hover-border">Product lists</Link>
+                    <Link href="/products" className="hover-border">Popular</Link>
+                    <Link href="/products" className="hover-border">Top seller</Link>
+                    <Link href="/products" className="hover-border">New Arrival</Link>
                 </div>
                 <div className="flex flex-col gap-4 text-sm items-center sm:items-start">
                     <p className="text-lg text-tcspink">Company</p>

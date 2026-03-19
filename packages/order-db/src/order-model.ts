@@ -1,12 +1,12 @@
 import mongoose, { InferSchemaType, model } from 'mongoose';
 const { Schema } = mongoose;
 
-export const OrderStatus = ["success", "failed"] as const
+export const OrderStatus = ["PENDING", "PAID", "FAILED"] as const
 
 const OrderSchema = new Schema({
     userId: { type: String, required: true},
     email: { type: String, required: true},
-    amount: { type: Number, required: true},
+    totalAmount: { type: Number, required: true},
     status: { type: String, required: true, enum: OrderStatus},
     products: { type: [
             {
@@ -23,6 +23,7 @@ const OrderSchema = new Schema({
                 address: { type: String, required: true},
                 city: { type: String, required: true},
                 state: { type: String, required: true},
+                zip: { type: String, required: true},
             }
         ], required: true,
     },

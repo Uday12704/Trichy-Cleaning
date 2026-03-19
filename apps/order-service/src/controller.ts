@@ -4,7 +4,7 @@ import { calculateTotalPrice } from "./utils/pricing";
 import { FastifyRequest, FastifyReply } from "fastify";
 
 export interface CreateOrderBody {
-  items: { productId: string; quantity: number }[];
+  products: { productId: string; name: string; quantity: number; price: number }[];
   userId: string;
   userEmail: string;
   shippingInfo: {
@@ -21,19 +21,19 @@ export interface CreateOrderBody {
 export const createOrder = async (request: FastifyRequest<{ Body: CreateOrderBody }>, 
   reply: FastifyReply) => {
     
-    const { items, userId, userEmail, shippingInfo } = request.body;
+    const { products, userId, userEmail, shippingInfo } = request.body;
 
-    if (!items || items.length === 0) {
+    if (!products || products.length === 0) {
         return reply.status(400).send({ message: "Cart is empty" });
     }
 
     try {
-        const totalAmount = await calculateTotalPrice(items);
+        const totalAmount = await calculateTotalPrice(products);
         
         const newOrder = await Order.create({
             userId,
             email: userEmail || shippingInfo.email,
-            items,
+            products,
             totalAmount,
             shippingInfo: {
                 name: shippingInfo.name,

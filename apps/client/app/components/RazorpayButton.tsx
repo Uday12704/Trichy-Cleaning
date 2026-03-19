@@ -39,7 +39,7 @@ export default function RazorpayButton({ shippingForm, amount, cartItems }: Razo
                 },
                 body: JSON.stringify({
                     userId: userId,
-                    items: cartItems,
+                    products: cartItems,
                     userEmail: shippingForm.email,
                     shippingInfo: {
                         name: shippingForm.name,

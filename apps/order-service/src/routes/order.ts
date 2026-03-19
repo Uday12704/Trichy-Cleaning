@@ -4,8 +4,8 @@ import { Order } from "@repo/order-db"
 import { createOrder, CreateOrderBody, verifyPayment } from "../controller";
 
 export const OrderRoute = async (fastify:FastifyInstance) => {
-    fastify.get("/user-order", { preHandler: shouldBeUser }, async (request, reply) => {
-        const orders = await Order.find({userId: request.userId});
+    fastify.get("/user-orders", { preHandler: shouldBeUser }, async (request, reply) => {
+        const orders = await Order.find({userId: request.userId}).select("userId email totalAmount products status createdAt");
         return reply.send(orders);
     })
     fastify.get("/orders", { preHandler: shouldBeAdmin }, async (request, reply) => {

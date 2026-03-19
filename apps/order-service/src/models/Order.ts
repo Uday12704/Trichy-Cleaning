@@ -3,7 +3,7 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface IOrder extends Document {
   userId: string;
   email: string;
-  items: { productId: string; quantity: number; price: number }[];
+  products: { productId: string; name: string, quantity: number; price: number }[];
   totalAmount: number;
   status: 'PENDING' | 'PAID' | 'FAILED';
   shippingInfo: {
@@ -24,9 +24,10 @@ const orderSchema = new Schema({
     userId: { type: String, required: true },
     email: { type: String, required: true },
     totalAmount: { type: Number, required: true },
-    items: [
+    products: [
         {
           productId: String,
+          name: String,
           quantity: Number,
           price: Number
         }
